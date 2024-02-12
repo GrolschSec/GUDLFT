@@ -26,9 +26,13 @@ def clubs():
 
 
 @pytest.fixture
-def client(monkeypatch, competitions, clubs):
+def client():
     app.config["TESTING"] = True
-    monkeypatch.setattr("server.competitions", competitions)
-    monkeypatch.setattr("server.clubs", clubs)
     with app.test_client() as client:
         yield client
+
+
+@pytest.fixture(autouse=True)
+def common_setup(monkeypatch, competitions, clubs):
+    monkeypatch.setattr("server.competitions", competitions)
+    monkeypatch.setattr("server.clubs", clubs)
