@@ -8,7 +8,7 @@ def client():
 		yield client
 
 @pytest.fixture
-def competitions_fixture():
+def competitions():
 	data = [
         {
             "name": "Spring Festival",
@@ -24,7 +24,7 @@ def competitions_fixture():
 	return data
 
 @pytest.fixture
-def clubs_fixture():
+def clubs():
 	data = [
 		{
         	"name":"Simply Lift",
