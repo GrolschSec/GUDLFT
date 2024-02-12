@@ -3,13 +3,6 @@ from server import app
 
 
 @pytest.fixture
-def client():
-    app.config["TESTING"] = True
-    with app.test_client() as client:
-        yield client
-
-
-@pytest.fixture
 def competitions():
     data = [
         {
@@ -33,7 +26,9 @@ def clubs():
 
 
 @pytest.fixture
-def common_setup(monkeypatch, competitions, clubs, client):
+def client(monkeypatch, competitions, clubs):
+    app.config["TESTING"] = True
     monkeypatch.setattr("server.competitions", competitions)
     monkeypatch.setattr("server.clubs", clubs)
-    return client
+    with app.test_client() as client:
+        yield client
