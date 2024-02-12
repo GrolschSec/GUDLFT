@@ -16,7 +16,7 @@ class TestShowSummary:
 
     def test_show_summary_with_invalid_email(self, client):
         invalid_email = "invalid@test.com"
-        response = client.post('/showSummary', data={'email': invalid_email})
+        response = client.post('/showSummary', data={'email': invalid_email}, follow_redirects=True)
         assert response.status_code == 200
         assert "Sorry, that email wasn't found." in response.get_data(as_text=True)
 
