@@ -1,7 +1,6 @@
 import pytest
 
 
-@pytest.mark.usefixtures("client", "clubs", "competitions")
 class TestShowSummary:
     def test_show_summary_with_valid_email(self, client, clubs):
         valid_email = next(club["email"] for club in clubs)
