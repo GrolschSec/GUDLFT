@@ -1,5 +1,4 @@
 import pytest
-from server import app, clubs, competitions
 
 
 @pytest.mark.usefixtures('client', 'clubs', 'competitions')
@@ -9,7 +8,7 @@ class TestShowSummary:
         monkeypatch.setattr('server.clubs', clubs)
         monkeypatch.setattr('server.competitions', competitions)
     
-    def test_show_summary_with_valid_email(self, client):
+    def test_show_summary_with_valid_email(self, client, clubs):
         valid_email = next(club['email'] for club in clubs)
         response = client.post('/showSummary', data={'email': valid_email})
         assert response.status_code == 200
