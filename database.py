@@ -26,3 +26,8 @@ def saveCompetitions(competitions):
 CLUBS = loadClubs()
 
 COMPETITIONS = loadCompetitions()
+
+def saveToDB(app):
+    if not app.config['TESTING']:
+        saveClubs(CLUBS)
+        saveCompetitions(COMPETITIONS)
