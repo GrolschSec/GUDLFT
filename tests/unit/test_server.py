@@ -32,9 +32,9 @@ class TestPurchasePlaces:
 
     def test_purchase_places_more_than_12_in_2_times(self, client):
         data = {
-                "competition": "Winter Showdown",
-                "club": "Simply Lift",
-                "places": "7",
+            "competition": "Winter Showdown",
+            "club": "Simply Lift",
+            "places": "7",
         }
         client.post(
             "/purchasePlaces",
