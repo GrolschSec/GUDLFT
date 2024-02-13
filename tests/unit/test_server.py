@@ -6,7 +6,7 @@ class TestPurchasePlaces:
         response = client.post(
             "/purchasePlaces",
             data={
-                "competition": "Spring Festival",
+                "competition": "Winter Showdown",
                 "club": "Simply Lift",
                 "places": "6",
             },
@@ -18,7 +18,7 @@ class TestPurchasePlaces:
         response = client.post(
             "/purchasePlaces",
             data={
-                "competition": "Spring Festival",
+                "competition": "Winter Showdown",
                 "club": "Simply Lift",
                 "places": "13",
             },
@@ -32,7 +32,7 @@ class TestPurchasePlaces:
 
     def test_purchase_places_more_than_12_in_2_times(self, client):
         data = {
-                "competition": "Spring Festival",
+                "competition": "Winter Showdown",
                 "club": "Simply Lift",
                 "places": "7",
         }
