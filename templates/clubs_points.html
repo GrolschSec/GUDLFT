@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Clubs Points</title>
+	</head>
+	<body>
+		<h1>Clubs Points</h1>
+		{% for club in clubs %}
+    		<p>Club Name: {{ club.name }}, Points: {{ club.points }}</p>
+		{% endfor %}
+	</body>
+</html>
