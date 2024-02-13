@@ -11,6 +11,7 @@ def competitions():
             "numberOfPlaces": "25",
         },
         {"name": "Fall Classic", "date": "2020-10-22 13:30:00", "numberOfPlaces": "13"},
+        {"name": "Winter Showdown", "date": "2024-12-05 11:00:00", "numberOfPlaces": "10"},
     ]
     return data
 
