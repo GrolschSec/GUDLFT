@@ -39,7 +39,7 @@ def purchasePlaces():
     placesRequired = int(request.form["places"])
     competition["numberOfPlaces"] = int(competition["numberOfPlaces"]) - placesRequired
     club["points"] = str(int(club["points"]) - placesRequired)
-    saveToDB()
+    saveToDB(app)
     flash("Great-booking complete!")
     return render_template("welcome.html", club=club, competitions=COMPETITIONS)
 
