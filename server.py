@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, flash, url_for
 from database import CLUBS, COMPETITIONS
 
+
 app = Flask(__name__)
 app.secret_key = "something_special"
 
