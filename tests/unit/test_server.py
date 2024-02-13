@@ -49,7 +49,7 @@ class TestPurchasePlaces:
             ):
                 assert "Booking complete!" not in response.get_data(as_text=True)
                 assert (
-                    "You can't book places for past competitions"
+                    "You can&#39;t book places for past competitions!"
                     in response.get_data(as_text=True)
                 )
 
@@ -70,6 +70,6 @@ class TestPurchasePlaces:
             ):
                 assert "Great-booking complete!" in response.get_data(as_text=True)
                 assert (
-                    "You can't book places for past competitions"
+                    "You can&#39;t book places for past competitions!"
                     not in response.get_data(as_text=True)
                 )
