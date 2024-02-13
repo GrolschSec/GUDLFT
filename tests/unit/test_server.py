@@ -68,7 +68,7 @@ class TestPurchasePlaces:
                 datetime.strptime(competition["date"], "%Y-%m-%d %H:%M:%S")
                 > datetime.now()
             ):
-                assert "Booking complete!" in response.get_data(as_text=True)
+                assert "Great-booking complete!" in response.get_data(as_text=True)
                 assert (
                     "You can't book places for past competitions"
                     not in response.get_data(as_text=True)
