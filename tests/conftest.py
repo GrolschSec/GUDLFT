@@ -23,7 +23,7 @@ def competitions():
 @pytest.fixture
 def clubs():
     data = [
-        {"name": "Simply Lift", "email": "john@simplylift.co", "points": "13"},
+        {"name": "Simply Lift", "email": "john@simplylift.co", "points": "14"},
         {"name": "Iron Temple", "email": "admin@irontemple.com", "points": "4"},
         {"name": "She Lifts", "email": "kate@shelifts.co.uk", "points": "12"},
     ]

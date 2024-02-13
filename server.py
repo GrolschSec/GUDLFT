@@ -1,7 +1,6 @@
-import json
 from flask import Flask, render_template, request, redirect, flash, url_for
 from datetime import datetime
-from database import CLUBS, COMPETITIONS
+from database import CLUBS, COMPETITIONS, saveToDB
 
 
 def is_past_competition(competition):
@@ -61,6 +60,8 @@ def purchasePlaces():
             int(competition["numberOfPlaces"]) - placesRequired
         )
         club[competition["name"]] += placesRequired
+        club["points"] = str(int(club["points"]) - placesRequired)
+        saveToDB(app)
         flash("Great-booking complete!")
     return render_template("welcome.html", club=club, competitions=COMPETITIONS)
 
