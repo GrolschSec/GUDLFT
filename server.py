@@ -14,12 +14,12 @@ def index():
 
 @app.route("/showSummary", methods=["POST"])
 def showSummary():
-    if request.form["email"] not in [club["email"] for club in clubs]:
+    if request.form["email"] not in [club["email"] for club in CLUBS]:
         flash("Sorry, that email wasn't found.")
         return redirect(url_for("index"))
     else:
-        club = [club for club in clubs if club["email"] == request.form["email"]][0]
-        return render_template("welcome.html", club=club, competitions=competitions)
+        club = [club for club in CLUBS if club["email"] == request.form["email"]][0]
+        return render_template("welcome.html", club=club, competitions=COMPETITIONS)
 
 
 @app.route("/book/<competition>/<club>")
