@@ -35,5 +35,5 @@ def client():
 
 @pytest.fixture(autouse=True)
 def common_setup(monkeypatch, competitions, clubs):
-    monkeypatch.setattr("server.competitions", competitions)
-    monkeypatch.setattr("server.clubs", clubs)
+    monkeypatch.setattr("server.COMPETITIONS", competitions)
+    monkeypatch.setattr("server.CLUBS", clubs)
