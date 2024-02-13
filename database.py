@@ -1,4 +1,5 @@
 from json import load, dump
+from server import app
 
 
 def loadClubs():
@@ -26,3 +27,8 @@ def saveCompetitions(competitions):
 CLUBS = loadClubs()
 
 COMPETITIONS = loadCompetitions()
+
+def saveToDB():
+    if not app.config['TESTING']:
+        saveClubs(CLUBS)
+        saveCompetitions(COMPETITIONS)
