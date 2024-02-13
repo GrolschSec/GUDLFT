@@ -10,7 +10,7 @@ class TestShowSummary:
         soup = BeautifulSoup(response.get_data(as_text=True), "html.parser")
         competitions = soup.find_all("li")
         return competitions
-    
+
     def test_show_summary_with_valid_email(self, client, clubs):
         valid_email = next(club["email"] for club in clubs)
         response = client.post("/showSummary", data={"email": valid_email})
@@ -23,7 +23,7 @@ class TestShowSummary:
         )
         assert response.status_code == 200
         assert "Sorry, that email wasn&#39;t found." in response.get_data(as_text=True)
-    
+
     def test_show_summary_past_event_not_active(self, setup):
         for competition in setup:
             date_string = (
@@ -83,7 +83,7 @@ class TestPurchasePlaces:
             "You don&#39;t have enough points to complete booking!"
             in response.get_data(as_text=True)
         )
-        
+
     def test_purchase_places_more_than_12_places(self, client):
         response = client.post(
             "/purchasePlaces",
@@ -162,7 +162,7 @@ class TestPurchasePlaces:
                     "You can&#39;t book places for past competitions!"
                     not in response.get_data(as_text=True)
                 )
-                
+
     def test_purchase_places_wallet_update(self, client, clubs):
         places = 3
         points = next(
@@ -180,3 +180,11 @@ class TestPurchasePlaces:
         assert next(
             (club["points"] for club in clubs if club["name"] == "Simply Lift"), None
         ) == str(int(points) - places)
+
+
+class TestClubsPointsDisplay:
+    def test_clubs_points_display_all_clubs(self, client, clubs):
+        response = client.get("/clubs/points")
+        assert response.status_code == 200
+        for club in clubs:
+            assert club["name"] in response.get_data(as_text=True)
