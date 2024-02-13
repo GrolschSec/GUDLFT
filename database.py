@@ -1,5 +1,6 @@
 from json import load, dump
 
+
 def loadClubs():
     with open("clubs.json") as c:
         listOfClubs = load(c)["clubs"]
@@ -11,13 +12,16 @@ def loadCompetitions():
         listOfCompetitions = load(comps)["competitions"]
         return listOfCompetitions
 
+
 def saveClubs(clubs):
-	with open("clubs.json", "w") as c:
-		dump({"clubs": clubs}, c)
+    with open("clubs.json", "w") as c:
+        dump({"clubs": clubs}, c)
+
 
 def saveCompetitions(competitions):
-	with open("competitions.json", "w") as comps:
-		dump({"competitions": competitions}, comps)
+    with open("competitions.json", "w") as comps:
+        dump({"competitions": competitions}, comps)
+
 
 CLUBS = loadClubs()
 
