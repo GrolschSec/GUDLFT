@@ -13,13 +13,13 @@ def loadCompetitions():
         return listOfCompetitions
 
 
-def saveClubs(clubs):
-    with open("clubs.json", "w") as c:
+def saveClubs(clubs, filename="clubs.json"):
+    with open(filename, "w") as c:
         dump({"clubs": clubs}, c)
 
 
-def saveCompetitions(competitions):
-    with open("competitions.json", "w") as comps:
+def saveCompetitions(competitions, filename="competitions.json"):
+    with open(filename, "w") as comps:
         dump({"competitions": competitions}, comps)
 
 
