@@ -1,8 +1,6 @@
 # gudlift-registration
 
 1. Why
-
-
     This is a proof of concept (POC) project to show a light-weight version of our competition booking platform. The aim is the keep things as light as possible, and use feedback from the users to iterate.
 
 2. Getting Started
@@ -25,6 +23,10 @@
 
 3. Installation
 
+    - Clone the repository:  
+    <code>
+    git clone https://github.com/GrolschSec/gudlft.git
+    </code>
     - After cloning, change into the directory and type <code>virtualenv .</code>. This will then set up a a virtual python environment within that directory.
 
     - Next, type <code>source bin/activate</code>. You should see that your command prompt has changed to the name of the folder. This means that you can install packages in here without affecting affecting files outside. To deactivate, type <code>deactivate</code>
@@ -33,7 +35,7 @@
 
     - Flask requires that you set an environmental variable to the python file. However you do that, you'll want to set the file to be <code>server.py</code>. Check [here](https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application) for more details
 
-    - You should now be ready to test the application. In the directory, type either <code>flask run</code> or <code>python -m flask run</code>. The app should respond with an address you should be able to go to using your browser.
+    - You should now be ready to test the application. In the directory, type either <code>flask --app server.py run</code> or <code>python -m flask --app server.py run</code>. The app should respond with an address you should be able to go to using your browser.
 
 4. Current Setup
 
@@ -44,8 +46,8 @@
 
 5. Testing
 
-    You are free to use whatever testing framework you like-the main thing is that you can show what tests you are using.
-
-    We also like to show how well we're testing, so there's a module called 
-    [coverage](https://coverage.readthedocs.io/en/coverage-5.1/) you should add to your project.
+    - Each issues from the [original project](https://github.com/OpenClassrooms-Student-Center/Python_Testing/issues) have been corrected independently you can find them all on each bug/* branches.
+    - The project include severals unit test and integration test but also some performance test that you can run just by typing <code>pytest</code>
+    - You can see the testing coverage of the project using <code>coverage run -m pytest</code> and then generate a report using <code>coverage report</code> or <code>coverage html</code> to generate an html report.
+    - The project also include perfomance tests using locust to run them you have to run server first as explained in the installation process then run <code>locust -f tests/performance/locustfile.py --headless -u 6 -r 1 --host http://localhost:5000/</code> to run it in headless mode or you can run <code>locust -f tests/performance/locustfile.py</code> without options and then connect from your navigator localhost port 8089 as this [link](http://localhost:8089/) and then configure and run you test from there.
 
