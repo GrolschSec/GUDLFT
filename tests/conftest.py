@@ -18,6 +18,11 @@ def competitions():
             "date": "2024-12-05 11:00:00",
             "numberOfPlaces": "14",
         },
+        {
+            "name": "WinShow",
+            "date": "2024-12-05 11:00:00",
+            "numberOfPlaces": "4",
+        },
     ]
     return data
 

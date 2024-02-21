@@ -137,3 +137,17 @@ class TestPurchasePlaces:
         assert next(
             (club["points"] for club in clubs if club["name"] == "Simply Lift"), None
         ) == str(int(points) - places)
+    
+    def test_purchase_places_more_than_available(self, client, competitions):
+        place_available = next((comp["numberOfPlaces"] for comp in competitions if comp["name"] == "WinShow"), None)
+        response = client.post(
+            "/purchasePlaces",
+            data={
+                "competition": "WinShow",
+                "club": "Simply Lift",
+                "places": f"{int(place_available) + 1}",
+            },
+        )
+        assert response.status_code == 200
+        assert "Great-booking complete!" not in response.get_data(as_text=True)
+        assert "You can&#39;t buy more places than available!" in response.get_data(as_text=True)
